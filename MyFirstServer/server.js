@@ -1,9 +1,7 @@
 const port = process.env.PORT || 8080;
 const express = require('express');
 const fs = require('fs');
-const util = require('util');
 var app = express();
-const readFl = util.promisify(fs.readFile);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
