@@ -2,7 +2,9 @@ var submit = document.getElementById("form1");
 var logout = document.getElementById('logout');
 var login = document.getElementById('login');
 var uid = document.getElementById('uid');
+var chatArea = document.getElementById('chatArea');
 refreshUid();
+addChat();
 submit.addEventListener('submit', async function (event) {
     event.preventDefault();
     if (!localStorage.getItem('username')) {
@@ -18,6 +20,7 @@ submit.addEventListener('submit', async function (event) {
             'username': username
         };
         let res = await fetchData('/chat', data);
+        addChat();
         field[0].value = '';
     }
 });
@@ -47,7 +50,7 @@ logout.addEventListener('click', function (event) {
     }
 });
 login.addEventListener('click', (event) => {
-    location.href='/login.html'
+    location.href = '/login.html'
 })
 function refreshUid() {
     uid.innerHTML = localStorage.getItem('username');
@@ -61,3 +64,21 @@ function refreshUid() {
         login.style.display = 'none';
     }
 }
+async function addChat() {
+    chatArea.innerHTML = "";
+    let res = await fetch('/getChat', { method: "POST" });
+    let chats = await res.json();
+    console.log(chats);
+    for (chat in chats) {
+        let div = document.createElement('div');
+        div.classList.add('chat');
+        let sender = document.createElement('p');
+        let message = document.createElement('p');
+        sender.textContent = chats[chat].user;
+        message.textContent = chats[chat].chat;
+        div.appendChild(sender);
+        div.appendChild(message);
+        chatArea.appendChild(div);
+    }
+}
+setInterval(addChat, 10000);
