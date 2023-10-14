@@ -5,17 +5,9 @@ var app = express();
 var chats =new Array();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname));
-/*app.get('/', (req, res) => {
-
-    res.sendFile(__dirname + '/index.html');
-
-});*/
-app.get('/login.html', (req, res) => {
-
-    res.sendFile(__dirname + '/login.html');
-
-});
+app.use(express.static(__dirname+'/Website/Layouts'));
+app.use(express.static(__dirname+'/Website/JavaScript'));
+app.use(express.static(__dirname+'/Website/StyleSheets'));
 app.post('/chat', (req, res) => {
     const username = req.body.username;
     const message = req.body.message;
@@ -53,7 +45,10 @@ app.post('/logout_alert', (req, res) => {
     res.json({ status: '1' });
 });
 app.post('/getChat', (req, res) => {
-    res.json(chats);
-  //  console.log(chats);
+    let chatsToSend = new Array();
+    for (let i = req.body.chatCount; i < chats.length; i++) {
+        chatsToSend.push(chats[i]);
+    }
+    res.json(chatsToSend);
 });
 app.listen(port);

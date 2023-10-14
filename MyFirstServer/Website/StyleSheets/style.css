@@ -1,0 +1,87 @@
+.main {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+#div1 {
+    display: block;
+    width: 100%;
+    position: relative;
+    background-color: mintcream;
+    height:fit-content;
+}
+
+
+.details {
+    display: flex;
+    flex-direction: row;
+}
+
+.partition {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0px;
+    border: solid;
+    height: 100%;
+    max-height: fit-content;
+    position: relative;
+    border-width: 2px;
+}
+
+#partition2 {
+    width: 100%;
+}
+
+#partition1 {
+    width: fit-content;
+    flex-wrap: nowrap;
+}
+
+#chatArea {
+    display: block;
+    width: 100%;
+    overflow-y: scroll;
+    min-height: 95%;
+}
+
+.data {
+    color: blue;
+    font-size: smaller;
+    float: right;
+}
+
+#form1 {
+    width: 100%;
+}
+
+.refresh {
+    position: fixed;
+    bottom: 2%;
+}
+
+.chatRecieved {
+    display: block;
+    border: solid;
+    border-width: 1px;
+    border-color: cadetblue;
+    width: 50%;
+    border-radius: 20px;
+    background-color: antiquewhite;
+    word-wrap: normal;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+.chatSent {
+    display: block;
+    border: solid;
+    border-width: 1px;
+    border-color: antiquewhite;
+    width: 50%;
+    border-radius: 20px;
+    background-color: cadetblue;
+    word-wrap: normal;
+    margin-left: 2%;
+    margin-top: 2%;
+}

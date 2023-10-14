@@ -29,15 +29,21 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="client.js" />
+    <Content Include="Website\JavaScript\client.js" />
     <Content Include="credentials.json" />
-    <Content Include="index.html" />
-    <Content Include="login.js" />
-    <Content Include="login.html" />
+    <Content Include="Website\Layouts\index.html" />
+    <Content Include="Website\JavaScript\login.js" />
+    <Content Include="Website\Layouts\login.html" />
     <Content Include="server.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <Content Include="style.css" />
+    <Content Include="Website\StyleSheets\style.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Website\Layouts\" />
+    <Folder Include="Website\JavaScript\" />
+    <Folder Include="Website\" />
+    <Folder Include="Website\StyleSheets\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>

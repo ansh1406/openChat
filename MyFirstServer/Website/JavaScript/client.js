@@ -3,8 +3,10 @@ var logout = document.getElementById('logout');
 var login = document.getElementById('login');
 var uid = document.getElementById('uid');
 var chatArea = document.getElementById('chatArea');
+var currentChatCount = 0;
 refreshUid();
 addChat();
+
 submit.addEventListener('submit', async function (event) {
     event.preventDefault();
     if (!localStorage.getItem('username')) {
@@ -65,20 +67,29 @@ function refreshUid() {
     }
 }
 async function addChat() {
-    chatArea.innerHTML = "";
-    let res = await fetch('/getChat', { method: "POST" });
+   // chatArea.innerHTML = "";
+    let res = await fetch('/getChat', {
+        method: "POST",
+        headers: {
+            'content-type':'application/json'
+        },
+        body: JSON.stringify({ 'chatCount': currentChatCount })
+    });
     let chats = await res.json();
-    console.log(chats);
     for (chat in chats) {
         let div = document.createElement('div');
-        div.classList.add('chat');
+        if (chats[chat].user == localStorage.getItem('username')) div.classList.add('chatSent');
+        else div.classList.add('chatRecieved');
         let sender = document.createElement('p');
         let message = document.createElement('p');
+        sender.style.marginLeft = '2%';
+        message.style.marginLeft = '2%';
         sender.textContent = chats[chat].user;
         message.textContent = chats[chat].chat;
         div.appendChild(sender);
         div.appendChild(message);
         chatArea.appendChild(div);
+        currentChatCount++;
     }
 }
-setInterval(addChat, 10000);
+setInterval(addChat, 1000);
