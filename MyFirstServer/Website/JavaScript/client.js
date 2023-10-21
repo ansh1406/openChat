@@ -6,7 +6,6 @@ var chatArea = document.getElementById('chatArea');
 var currentChatCount = 0;
 refreshUid();
 addChat();
-
 submit.addEventListener('submit', async function (event) {
     event.preventDefault();
     if (!localStorage.getItem('username')) {

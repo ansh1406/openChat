@@ -29,6 +29,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Website\StyleSheets\Assets\send_button.png" />
     <Content Include="Website\JavaScript\client.js" />
     <Content Include="credentials.json" />
     <Content Include="Website\Layouts\index.html" />
@@ -43,6 +44,7 @@
     <Folder Include="Website\Layouts\" />
     <Folder Include="Website\JavaScript\" />
     <Folder Include="Website\" />
+    <Folder Include="Website\StyleSheets\Assets\" />
     <Folder Include="Website\StyleSheets\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />

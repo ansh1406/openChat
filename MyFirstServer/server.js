@@ -8,6 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname+'/Website/Layouts'));
 app.use(express.static(__dirname+'/Website/JavaScript'));
 app.use(express.static(__dirname+'/Website/StyleSheets'));
+app.use(express.static(__dirname+'/Website/Assets'));
 app.post('/chat', (req, res) => {
     const username = req.body.username;
     const message = req.body.message;
